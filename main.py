@@ -33,6 +33,10 @@ def validate(line):
         raise ValueError("excuse line contains control characters")
     if not any(ch.isalpha() for ch in line):
         raise ValueError("excuse line must contain at least one letter")
+    if line[-1] not in ".!?":
+        raise ValueError(
+            "excuse line must end with terminal punctuation"
+        )
     if len(line) > MAX_CHARS:
         raise ValueError(
             "excuse line is %d characters, over the %d limit"
